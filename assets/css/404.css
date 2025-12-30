@@ -1,0 +1,217 @@
+/* ==========================================================================
+   404 Error Page - Minimalist Photography Portfolio Style
+   ========================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.error-page {
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.05em;
+}
+
+/* Navigation */
+.error-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.error-logo {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s;
+}
+
+.error-logo:hover {
+  opacity: 0.6;
+}
+
+.error-nav-right {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.error-nav-right a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  transition: opacity 0.3s;
+}
+
+.error-nav-right a:hover {
+  opacity: 0.6;
+}
+
+/* Main Content */
+.error-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+}
+
+.error-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+.error-number {
+  font-size: clamp(8rem, 20vw, 16rem);
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+}
+
+.error-heading {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin-bottom: 1.5rem;
+}
+
+.error-description {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  opacity: 0.7;
+  margin-bottom: 3rem;
+}
+
+.error-link {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  padding: 1rem 2.5rem;
+  border: 1px solid #ffffff;
+  transition: all 0.3s ease;
+}
+
+.error-link:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Footer */
+.error-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.error-footer-left,
+.error-footer-center,
+.error-footer-right {
+  flex: 1;
+}
+
+.error-footer-left {
+  text-align: left;
+}
+
+.error-footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.error-footer-right {
+  text-align: right;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .error-nav,
+  .error-footer {
+    padding: 1.5rem 2rem;
+  }
+
+  .error-nav-right {
+    gap: 1.5rem;
+  }
+
+  .error-nav-right a {
+    font-size: 0.7rem;
+  }
+
+  .error-main {
+    padding: 6rem 2rem 3rem;
+  }
+
+  .error-number {
+    margin-bottom: 1.5rem;
+  }
+
+  .error-heading {
+    margin-bottom: 1rem;
+  }
+
+  .error-description {
+    margin-bottom: 2rem;
+  }
+
+  .error-link {
+    padding: 0.875rem 2rem;
+  }
+
+  .error-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .error-footer-left,
+  .error-footer-center,
+  .error-footer-right {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-nav {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .error-nav-right {
+    gap: 1rem;
+  }
+}

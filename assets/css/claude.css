@@ -1,0 +1,578 @@
+/* ==========================================================================
+   Minimalist Photography Portfolio
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties
+   -------------------------------------------------------------------------- */
+:root {
+  --color-bg: #000000;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.6);
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  --font-main: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "EB Garamond", serif;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 6rem;
+
+  --transition: all 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base
+   -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Navigation
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s;
+}
+
+.navbar-brand:hover {
+  opacity: 0.6;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  transition: opacity 0.3s;
+  text-transform: uppercase;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 3rem;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 12vw, 10rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-image {
+  position: absolute;
+  object-fit: cover;
+  z-index: 1;
+  filter: grayscale(40%);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+/* Individual image positioning - Circular formation with more spacing */
+.hero-image-1 {
+  width: 280px;
+  height: 380px;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-image-2 {
+  width: 300px;
+  height: 400px;
+  top: 25%;
+  right: 8%;
+}
+
+.hero-image-3 {
+  width: 280px;
+  height: 360px;
+  bottom: 12%;
+  right: 25%;
+}
+
+.hero-image-4 {
+  width: 290px;
+  height: 380px;
+  bottom: 12%;
+  left: 25%;
+}
+
+.hero-image-5 {
+  width: 300px;
+  height: 400px;
+  top: 25%;
+  left: 8%;
+}
+
+/* --------------------------------------------------------------------------
+   5. About Section
+   -------------------------------------------------------------------------- */
+#about {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(20%);
+}
+
+.about-text h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+}
+
+.about-text p {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  opacity: 0.7;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* --------------------------------------------------------------------------
+   6. Projects/Gallery Section
+   -------------------------------------------------------------------------- */
+#projects {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-number {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  opacity: 0.2;
+}
+
+.section-title {
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.projects-grid {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 2rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.projects-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 400px;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  background: #111;
+  scroll-snap-align: start;
+}
+
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: grayscale(30%);
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+.project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-info {
+  transform: translateY(0);
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.project-count {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   7. Contact Section
+   -------------------------------------------------------------------------- */
+#contact {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+}
+
+#contact p {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact-email {
+  display: inline-block;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  padding: 1.25rem 3rem;
+  border: 2px solid #ffffff;
+  transition: var(--transition);
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.contact-email:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: var(--spacing-lg);
+}
+
+.social-links a {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  text-transform: uppercase;
+}
+
+.social-links a:hover {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   8. Footer
+   -------------------------------------------------------------------------- */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.footer-right {
+  text-align: right;
+  opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   9. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero-image {
+    width: 200px !important;
+    height: 280px !important;
+  }
+
+  .hero-image-1 {
+    top: 10%;
+    left: 5%;
+  }
+
+  .hero-image-2 {
+    top: 60%;
+    left: 8%;
+  }
+
+  .hero-image-3 {
+    top: 15%;
+    right: 5%;
+  }
+
+  .hero-image-4 {
+    bottom: 10%;
+    right: 5%;
+  }
+
+  .hero-image-5 {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar,
+  footer {
+    padding: 1.5rem 2rem;
+  }
+
+  .navbar-nav {
+    gap: 1.5rem;
+  }
+
+  .hero {
+    padding: 0 2rem;
+  }
+
+  .hero-image {
+    width: 150px !important;
+    height: 220px !important;
+  }
+
+  .hero-image-2,
+  .hero-image-4 {
+    display: none;
+  }
+
+  .hero-image-1 {
+    top: 5%;
+    left: 5%;
+  }
+
+  .hero-image-3 {
+    top: 10%;
+    right: 5%;
+  }
+
+  #about,
+  #projects,
+  #contact {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .projects-grid {
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    flex: 0 0 300px;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .navbar-nav {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.7rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. Utilities
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
