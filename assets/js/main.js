@@ -124,7 +124,7 @@ function initGSAPAnimations() {
       ease: "none",
       scrollTrigger: {
         trigger: projectsSection,
-        start: "top 80px",
+        start: "top 40px",
         end: () => `+=${scrollDistance + window.innerHeight}`,
         scrub: 1,
         pin: true,

@@ -37,12 +37,12 @@
   padding: 1.2rem 3rem;
   font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   text-decoration: none;
   color: #ffffff;
   background-color: #000000;
-  border: 3px solid #ffffff;
+  border: 2px solid #ffffff;
   transition: all 0.3s ease;
   cursor: pointer;
 }
