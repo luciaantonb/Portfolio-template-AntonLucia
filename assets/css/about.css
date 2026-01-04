@@ -1,0 +1,37 @@
+/* --------------------------------------------------------------------------
+   5. About Section
+   -------------------------------------------------------------------------- */
+#about {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(20%);
+}
+
+.about-text h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+}
+
+.about-text p {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  opacity: 0.7;
+  margin-bottom: var(--spacing-sm);
+}

@@ -1,0 +1,65 @@
+/* --------------------------------------------------------------------------
+   8. Footer 
+   -------------------------------------------------------------------------- */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.footer-column {
+  flex: 1;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-license {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.footer-license a {
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+
+.footer-license a:hover {
+  opacity: 1;
+}
+
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  text-align: center;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.footer-right {
+  text-align: right;
+  opacity: 0.6;
+}
+
+.footer-github {
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.footer-github:hover {
+  opacity: 1;
+}

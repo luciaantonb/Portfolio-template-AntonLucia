@@ -1,0 +1,17 @@
+/* --------------------------------------------------------------------------
+   10. Utilities
+   -------------------------------------------------------------------------- */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
