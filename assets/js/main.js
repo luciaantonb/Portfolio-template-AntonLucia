@@ -1,17 +1,21 @@
 // ==========================================================================
-// Main JavaScript - Photography Portfolio
+// Main JavaScript - Portfolio
 // ==========================================================================
 
 // Wait for DOM and GSAP to load
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM loaded");
+
   // Check if GSAP is loaded
   if (typeof gsap !== "undefined") {
+    console.log("GSAP loaded");
     initGSAPAnimations();
+  } else {
+    console.error("GSAP not loaded!");
   }
 
   // Initialize other features
   initNavigation();
-  initHorizontalScroll();
 });
 
 // --------------------------------------------------------------------------
@@ -21,19 +25,21 @@ function initGSAPAnimations() {
   // Register ScrollTrigger plugin if available
   if (typeof ScrollTrigger !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
+    console.log("ScrollTrigger registered");
+  } else {
+    console.error("ScrollTrigger not loaded!");
+    return;
   }
 
   // Hero Images - Simple fade in at their positions
   const heroImages = document.querySelectorAll(".hero-image");
 
   heroImages.forEach((img, index) => {
-    // Set initial state - invisible at their final position
     gsap.set(img, {
       opacity: 0,
       scale: 0.9,
     });
 
-    // Fade in with stagger
     gsap.to(img, {
       opacity: 1,
       scale: 1,
@@ -60,74 +66,96 @@ function initGSAPAnimations() {
     ease: "power3.out",
   });
 
-  // Scroll-triggered animations
-  if (typeof ScrollTrigger !== "undefined") {
-    // About section
-    gsap.from(".about-image img", {
+  // About section
+  gsap.from(".about-image img", {
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 0,
+    x: -100,
+    duration: 1,
+    ease: "power3.out",
+  });
+
+  gsap.from(".about-text", {
+    scrollTrigger: {
+      trigger: "#about",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 0,
+    x: 100,
+    duration: 1,
+    ease: "power3.out",
+  });
+
+  // Projects section header
+  gsap.from(".section-header", {
+    scrollTrigger: {
+      trigger: "#projects",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: "power3.out",
+  });
+
+  // HORIZONTAL SCROLL WITH PIN
+  const projectsGrid = document.querySelector(".projects-grid");
+  const projectsSection = document.querySelector("#projects");
+
+  if (projectsGrid && projectsSection) {
+    console.log("Setting up horizontal scroll");
+
+    // Get the scroll width
+    const scrollWidth = projectsGrid.scrollWidth;
+    const viewportWidth = projectsGrid.offsetWidth;
+    const scrollDistance = scrollWidth - viewportWidth;
+
+    console.log("Scroll distance:", scrollDistance);
+
+    // Create the horizontal scroll animation
+    const horizontalScroll = gsap.to(projectsGrid, {
+      x: -scrollDistance,
+      ease: "none",
       scrollTrigger: {
-        trigger: "#about",
-        start: "top 80%",
-        toggleActions: "play none none none",
+        trigger: projectsSection,
+        start: "top 80px",
+        end: () => `+=${scrollDistance + window.innerHeight}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        markers: false,
+        onEnter: () => console.log("Entered gallery"),
+        onLeave: () => console.log("Left gallery"),
+        onEnterBack: () => console.log("Entered gallery (back)"),
+        onLeaveBack: () => console.log("Left gallery (back)"),
       },
-      opacity: 0,
-      x: -100,
-      duration: 1,
-      ease: "power3.out",
     });
 
-    gsap.from(".about-text", {
-      scrollTrigger: {
-        trigger: "#about",
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      x: 100,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    // Projects section header
-    gsap.from(".section-header", {
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    // Project cards stagger
-    gsap.from(".project-card", {
-      scrollTrigger: {
-        trigger: ".projects-grid",
-        start: "top 70%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      y: 80,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-    });
-
-    // Contact section
-    gsap.from("#contact > *", {
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.2,
-      ease: "power3.out",
-    });
+    console.log("Horizontal scroll animation created");
+  } else {
+    console.error("Projects grid or section not found!");
   }
+
+  // Contact section
+  gsap.from("#contact > *", {
+    scrollTrigger: {
+      trigger: "#contact",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.2,
+    ease: "power3.out",
+  });
 }
 
 // --------------------------------------------------------------------------
@@ -136,6 +164,24 @@ function initGSAPAnimations() {
 function initNavigation() {
   const navbar = document.querySelector(".navbar");
   const navLinks = document.querySelectorAll(".nav-link");
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".navbar-nav");
+
+  // Hamburger menu toggle
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    // Close menu when clicking a link
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
+    });
+  }
 
   // Add scrolled class to navbar on scroll
   window.addEventListener("scroll", () => {
@@ -151,60 +197,32 @@ function initNavigation() {
     link.addEventListener("click", (e) => {
       const href = link.getAttribute("href");
 
-      // Only handle internal links
       if (href.startsWith("#")) {
         e.preventDefault();
         const target = document.querySelector(href);
 
         if (target) {
-          const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+          const offsetTop = target.offsetTop - 80;
 
           window.scrollTo({
             top: offsetTop,
             behavior: "smooth",
           });
-
-          // Update active state
-          navLinks.forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
         }
-      }
-    });
-  });
-
-  // Update active link on scroll
-  const sections = document.querySelectorAll("section[id]");
-
-  window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-
-      if (window.scrollY >= sectionTop - 200) {
-        current = section.getAttribute("id");
-      }
-    });
-
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
       }
     });
   });
 }
 
 // --------------------------------------------------------------------------
-// Project Card Hover Effect (optional enhancement)
+// Project Card Hover Effect
 // --------------------------------------------------------------------------
 const projectCards = document.querySelectorAll(".project-card");
 
 projectCards.forEach((card) => {
   card.addEventListener("mouseenter", function () {
     const img = this.querySelector("img");
-    if (img) {
+    if (img && typeof gsap !== "undefined") {
       gsap.to(img, {
         scale: 1.05,
         filter: "grayscale(0%)",
@@ -216,7 +234,7 @@ projectCards.forEach((card) => {
 
   card.addEventListener("mouseleave", function () {
     const img = this.querySelector("img");
-    if (img) {
+    if (img && typeof gsap !== "undefined") {
       gsap.to(img, {
         scale: 1,
         filter: "grayscale(30%)",
@@ -226,58 +244,3 @@ projectCards.forEach((card) => {
     }
   });
 });
-
-// --------------------------------------------------------------------------
-// Horizontal Scroll for Gallery
-// --------------------------------------------------------------------------
-function initHorizontalScroll() {
-  const projectsGrid = document.querySelector(".projects-grid");
-
-  if (!projectsGrid) return;
-
-  // Enable mouse wheel horizontal scroll
-  projectsGrid.addEventListener(
-    "wheel",
-    (e) => {
-      // Check if scrolling vertically
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        projectsGrid.scrollLeft += e.deltaY;
-      }
-    },
-    { passive: false }
-  );
-
-  // Smooth scroll for touch devices
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  projectsGrid.addEventListener("mousedown", (e) => {
-    isDown = true;
-    projectsGrid.style.cursor = "grabbing";
-    startX = e.pageX - projectsGrid.offsetLeft;
-    scrollLeft = projectsGrid.scrollLeft;
-  });
-
-  projectsGrid.addEventListener("mouseleave", () => {
-    isDown = false;
-    projectsGrid.style.cursor = "grab";
-  });
-
-  projectsGrid.addEventListener("mouseup", () => {
-    isDown = false;
-    projectsGrid.style.cursor = "grab";
-  });
-
-  projectsGrid.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - projectsGrid.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
-    projectsGrid.scrollLeft = scrollLeft - walk;
-  });
-
-  // Set initial cursor
-  projectsGrid.style.cursor = "grab";
-}

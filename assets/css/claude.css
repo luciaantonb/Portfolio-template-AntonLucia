@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Minimalist Photography Portfolio
+   Minimalist Portfolio
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -71,12 +71,43 @@ a {
 .navbar-brand {
   font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   transition: opacity 0.3s;
+  z-index: 1001;
 }
 
 .navbar-brand:hover {
   opacity: 0.6;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .navbar-nav {
@@ -88,13 +119,12 @@ a {
 .nav-link {
   font-size: 0.75rem;
   font-weight: 400;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   transition: opacity 0.3s;
   text-transform: uppercase;
 }
 
-.nav-link:hover,
-.nav-link.active {
+.nav-link:hover {
   opacity: 0.6;
 }
 
@@ -227,25 +257,27 @@ a {
    6. Projects/Gallery Section
    -------------------------------------------------------------------------- */
 #projects {
-  padding: var(--spacing-xl) var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-lg);
   border-top: 1px solid var(--color-border);
+  overflow: hidden;
+  min-height: 100vh;
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 .section-number {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 300;
   opacity: 0.2;
 }
 
 .section-title {
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   font-weight: 300;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -254,29 +286,17 @@ a {
 .projects-grid {
   display: flex;
   gap: 2rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
   padding-bottom: 2rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.projects-grid::-webkit-scrollbar {
-  display: none;
+  will-change: transform;
 }
 
 .project-card {
   position: relative;
   overflow: hidden;
   flex: 0 0 400px;
-  aspect-ratio: 3/4;
+  height: 520px;
   cursor: pointer;
   background: #111;
-  scroll-snap-align: start;
 }
 
 .project-card img {
@@ -324,90 +344,120 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   7. Contact Section
+   7. Contact Section - REBUILT FROM SCRATCH
    -------------------------------------------------------------------------- */
 #contact {
-  padding: var(--spacing-xl) var(--spacing-lg);
+  padding: 6rem 3rem;
   border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.contact-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
 }
 
-#contact h2 {
+.contact-title {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 300;
   letter-spacing: 0.05em;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
+  color: var(--color-text);
 }
 
-#contact p {
+.contact-description {
   font-size: clamp(0.875rem, 1.2vw, 1rem);
   font-weight: 300;
   letter-spacing: 0.05em;
+  line-height: 1.8;
   opacity: 0.7;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: 3rem;
+  color: var(--color-text);
 }
 
-.contact-email {
+.contact-button {
   display: inline-block;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  padding: 1.25rem 3rem;
-  border: 2px solid #ffffff;
-  transition: var(--transition);
+  padding: 1.2rem 3rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  text-decoration: none;
   color: #ffffff;
-  margin-bottom: 2rem;
+  background-color: #000000;
+  border: 3px solid #ffffff;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.contact-email:hover {
-  background: #ffffff;
+.contact-button:hover {
+  background-color: #ffffff;
   color: #000000;
 }
 
-.social-links {
+.contact-social {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-top: var(--spacing-lg);
+  margin-top: 3rem;
 }
 
-.social-links a {
+.social-link {
   font-size: 0.75rem;
   font-weight: 300;
-  letter-spacing: 0.15em;
-  opacity: 0.6;
-  transition: opacity 0.3s;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 }
 
-.social-links a:hover {
+.social-link:hover {
   opacity: 1;
 }
 
 /* --------------------------------------------------------------------------
-   8. Footer
+   8. Footer - REBUILT FROM SCRATCH
    -------------------------------------------------------------------------- */
-footer {
+.site-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 3rem;
-  font-size: 0.75rem;
-  font-weight: 300;
-  letter-spacing: 0.1em;
   border-top: 1px solid var(--color-border);
+  background-color: var(--color-bg);
 }
 
-.footer-left,
-.footer-center,
-.footer-right {
+.footer-column {
   flex: 1;
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .footer-left {
   text-align: left;
+}
+
+.footer-license {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.footer-license a {
+  text-decoration: underline;
+  transition: opacity 0.3s;
+}
+
+.footer-license a:hover {
+  opacity: 1;
 }
 
 .footer-center {
@@ -425,6 +475,16 @@ footer {
   opacity: 0.6;
 }
 
+.footer-github {
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.footer-github:hover {
+  opacity: 1;
+}
+
 /* --------------------------------------------------------------------------
    9. Responsive
    -------------------------------------------------------------------------- */
@@ -436,22 +496,22 @@ footer {
 
   .hero-image-1 {
     top: 10%;
-    left: 5%;
+    left: 50%;
   }
 
   .hero-image-2 {
     top: 60%;
-    left: 8%;
+    right: 8%;
   }
 
   .hero-image-3 {
     top: 15%;
-    right: 5%;
+    right: 25%;
   }
 
   .hero-image-4 {
     bottom: 10%;
-    right: 5%;
+    left: 25%;
   }
 
   .hero-image-5 {
@@ -460,13 +520,40 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .navbar,
-  footer {
+  .navbar {
     padding: 1.5rem 2rem;
   }
 
+  .hamburger {
+    display: flex;
+  }
+
   .navbar-nav {
-    gap: 1.5rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.98);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: right 0.3s ease;
+    padding: 2rem;
+  }
+
+  .navbar-nav.active {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  .site-footer {
+    padding: 1.5rem 2rem;
   }
 
   .hero {
@@ -485,7 +572,7 @@ footer {
 
   .hero-image-1 {
     top: 5%;
-    left: 5%;
+    left: 50%;
   }
 
   .hero-image-3 {
@@ -515,10 +602,16 @@ footer {
   }
 
   .project-card {
-    flex: 0 0 300px;
+    flex: 0 0 280px;
+    height: 380px;
   }
 
-  footer {
+  .contact-social {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .site-footer {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
@@ -565,14 +658,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* --------------------------------------------------------------------------
+   11. Accessibility - Reduced Motion
+   -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-image {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

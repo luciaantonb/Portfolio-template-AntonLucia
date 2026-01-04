@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your Name - Photographer</title>
+    <title>Your Name - Portfolio</title>
 
     <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,16 +16,20 @@
       href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <!-- CSS FILE -->
-    <link rel="stylesheet" href="./assets/css/claude.css" />
 
-    <!-- JAVASCRIPT FILE -->
-    <script src="./assets/js/main.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/claude.css" />
   </head>
-  <body data-bs-spy="scroll" data-bs-target="#navbar">
+  <body>
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
       <a class="navbar-brand" href="#">YOUR NAME</a>
+
+      <button class="hamburger" aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="#hero">HOME</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">ABOUT</a></li>
@@ -83,7 +87,7 @@
           <div class="about-text">
             <h2>About Me</h2>
             <p>
-              I’m a graphic designer with a strong interest in visual identity,
+              I'm a graphic designer with a strong interest in visual identity,
               layout, and conceptual design. My work focuses on creating clear,
               thoughtful visuals that connect ideas, people, and brands in a
               meaningful way.
@@ -95,7 +99,7 @@
               solutions that feel both refined and human.
             </p>
             <p>
-              Currently, I’m continuing to develop my practice through academic
+              Currently, I'm continuing to develop my practice through academic
               and personal projects, while collaborating with emerging brands
               and creative teams.
             </p>
@@ -115,7 +119,7 @@
           <article class="project-card">
             <img
               src="https://picsum.photos/400/600?random=3"
-              alt="Notes on Vision"
+              alt="Project 01"
             />
             <div class="project-info">
               <h3 class="project-title">Project 01</h3>
@@ -127,7 +131,7 @@
           <article class="project-card">
             <img
               src="https://picsum.photos/400/600?random=4"
-              alt="Undesignated"
+              alt="Project 02"
             />
             <div class="project-info">
               <h3 class="project-title">Project 02</h3>
@@ -137,7 +141,10 @@
 
           <!-- Project 3 -->
           <article class="project-card">
-            <img src="https://picsum.photos/400/600?random=5" alt="Florence" />
+            <img
+              src="https://picsum.photos/400/600?random=5"
+              alt="Project 03"
+            />
             <div class="project-info">
               <h3 class="project-title">Project 03</h3>
               <p class="project-count">Short Description</p>
@@ -146,7 +153,10 @@
 
           <!-- Project 4 -->
           <article class="project-card">
-            <img src="https://picsum.photos/400/600?random=6" alt="Coherence" />
+            <img
+              src="https://picsum.photos/400/600?random=6"
+              alt="Project 04"
+            />
             <div class="project-info">
               <h3 class="project-title">Project 04</h3>
               <p class="project-count">Short Description</p>
@@ -155,7 +165,10 @@
 
           <!-- Project 5 -->
           <article class="project-card">
-            <img src="https://picsum.photos/400/600?random=7" alt="We Dance" />
+            <img
+              src="https://picsum.photos/400/600?random=7"
+              alt="Project 05"
+            />
             <div class="project-info">
               <h3 class="project-title">Project 05</h3>
               <p class="project-count">Short Description</p>
@@ -166,7 +179,7 @@
           <article class="project-card">
             <img
               src="https://picsum.photos/400/600?random=8"
-              alt="Urban Stories"
+              alt="Project 06"
             />
             <div class="project-info">
               <h3 class="project-title">Project 06</h3>
@@ -178,39 +191,60 @@
 
       <!-- Contact Section -->
       <section id="contact">
-        <h2>Let's Work Together</h2>
-        <p>
-          Available for commissions, collaborations,<br />and exhibitions
-          worldwide
-        </p>
-        <a href="mailto:hello@yourname.com" class="contact-email"
-          >Get in Touch</a
-        >
+        <div class="contact-wrapper">
+          <h2 class="contact-title">Let's Work Together</h2>
+          <p class="contact-description">
+            Available for commissions, collaborations, and exhibitions worldwide
+          </p>
+          <a href="mailto:hello@yourname.com" class="contact-button"
+            >GET IN TOUCH</a
+          >
 
-        <div class="social-links">
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
-          <a href="#">LinkedIn</a>
+          <div class="contact-social">
+            <a href="https://www.instagram.com/" class="social-link"
+              >Instagram</a
+            >
+            <a href="https://www.behance.net/" class="social-link">Behance</a>
+            <a href="https://www.linkedin.com/" class="social-link">LinkedIn</a>
+          </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer>
-      <div class="footer-left">
+    <footer class="site-footer">
+      <div class="footer-column footer-left">
         <span>YOUR NAME</span>
+        <span class="footer-license"
+          >Licensed under
+          <a
+            href="https://opensource.org/licenses/MIT"
+            target="_blank"
+            rel="noopener noreferrer"
+            >MIT</a
+          ></span
+        >
       </div>
-      <div class="footer-center">
+      <div class="footer-column footer-center">
         <span>A Graphic Designer</span>
         <span>Based in Madrid</span>
       </div>
-      <div class="footer-right">
+      <div class="footer-column footer-right">
         <span>©2025</span>
+        <a
+          href="https://github.com/yourusername/yourrepo"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-github"
+        >
+          <span>GitHub</span>
+        </a>
       </div>
     </footer>
 
     <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>
