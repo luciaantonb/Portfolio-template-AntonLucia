@@ -2,49 +2,60 @@
 # This file will be used to generate your entry in the course showroom
 
 # Basic information
-handle: your-github-username
-name: Your Full Name
-email: your-email@udit.es
+handle: luciaantonb
+name: Lucía Antón
+email: lucia.anton@alumnos.udit.es
 
 # URLs (will be auto-generated if you follow naming conventions)
-github_url: https://github.com/your-username
-project_url: https://your-username.github.io/your-project-repo
-repository_url: https://github.com/your-username/your-project-repo
+github_url: https://github.com/luciaantonb
+project_url: https://luciaantonb.github.io/Portfolio-template-AntonLucia
+repository_url: https://github.com/luciaantonb/Portfolio-template-AntonLucia
 
 # Project details
 title:
-  es: Título de tu Proyecto en Español
-  en: Your Project Title in English
-
+  es: Plantilla de Portfolio Minimalista
+  en: Minimalist Portfolio Website Template
 abstract:
   es: |
-    Una descripción concisa de tu proyecto web en español. 
-    Explica qué construyes, para quién y por qué es importante.
+    Este proyecto consiste en el diseño y desarrollo de una plantilla de portfolio web minimalista con tema oscuro para creativos y diseñadores gráficos. 
+    Combina una estructura responsive con animaciones avanzadas mediante GSAP, incluyendo una galería con scroll horizontal y composiciones de imágenes animadas, 
+    permitiendo presentar el trabajo de forma inmersiva, coherente y visualmente impactante.
   en: |
-    A concise description of your web project in English.
-    Explain what you're building, for whom, and why it matters.
+    This project focuses on the design and development of a minimalist dark-themed portfolio website template for creatives and graphic designers.
+    It combines responsive design with advanced GSAP animations, including a horizontal scrolling gallery and animated image compositions, 
+    to create an immersive, cohesive, and visually striking presentation of creative work.
 
 # Technical tags (choose relevant ones)
 tags:
   - html5
   - css3
+  - javascript
+  - gsap
+  - scrolltrigger
   - responsive-design
   - accessibility
-  # Add more as relevant: javascript, sass, performance, etc.
+  - animation
+  - dark-theme
+  - minimalist-design
 
 # Learning objectives you're focusing on
 learning_focus:
   - semantic-html
   - mobile-first-design
+  - responsive-layouts
   - web-accessibility
-  # Add more as you progress
+  - interaction-design
+  - scroll-driven-animations
+  - gsap-scrolltrigger
+  - css-custom-properties
+  - reduced-motion-support
 
 # Week tracking (update as you go)
 milestones:
-  week_1_setup: false
-  week_2_brief: false
-  week_4_metadata: false
-  week_5_showcase: false
+  week_1_setup: true
+  week_2_brief: true
+  week_4_metadata: true
+  week_5_showcase: true
 
 # Optional: link to your project brief
 brief_url: project-brief.md
