@@ -1,34 +1,38 @@
 /* --------------------------------------------------------------------------
    9. Responsive
    -------------------------------------------------------------------------- */
+
 @media (max-width: 1024px) {
   .hero-image {
-    width: 200px !important;
-    height: 280px !important;
+    width: 180px !important;
+    height: 240px !important;
   }
 
   .hero-image-1 {
     top: 10%;
     left: 50%;
+    transform: translateX(-50%);
   }
 
   .hero-image-2 {
-    top: 60%;
-    right: 8%;
+    top: 30%;
+    right: 5%;
   }
 
   .hero-image-3 {
-    top: 15%;
-    right: 25%;
+    bottom: 15%;
+    right: 20%;
   }
 
   .hero-image-4 {
-    bottom: 10%;
-    left: 25%;
+    bottom: 15%;
+    left: 20%;
   }
 
   .hero-image-5 {
-    display: none;
+    display: block;
+    top: 30%;
+    left: 5%;
   }
 }
 
@@ -73,24 +77,40 @@
     padding: 0 2rem;
   }
 
-  .hero-image {
-    width: 150px !important;
-    height: 220px !important;
-  }
+  @media (max-width: 768px) {
+    .hero-image {
+      width: 120px !important;
+      height: 160px !important;
+    }
 
-  .hero-image-2,
-  .hero-image-4 {
-    display: none;
-  }
+    .hero-image-1 {
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-  .hero-image-1 {
-    top: 5%;
-    left: 50%;
-  }
+    .hero-image-2 {
+      top: 25%;
+      right: 3%;
+      display: block;
+    }
 
-  .hero-image-3 {
-    top: 10%;
-    right: 5%;
+    .hero-image-3 {
+      bottom: 18%;
+      right: 15%;
+    }
+
+    .hero-image-4 {
+      bottom: 18%;
+      left: 15%;
+      display: block;
+    }
+
+    .hero-image-5 {
+      display: block;
+      top: 25%;
+      left: 3%;
+    }
   }
 
   #about,

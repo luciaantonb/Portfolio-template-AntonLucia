@@ -36,6 +36,9 @@
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
+  position: relative;
+  width: 30px;
+  height: 24px;
 }
 
 .hamburger-line {
@@ -43,10 +46,26 @@
   height: 2px;
   background-color: var(--color-text);
   transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+}
+
+.hamburger-line:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-line:nth-child(3) {
+  bottom: 0;
 }
 
 .hamburger.active .hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .hamburger.active .hamburger-line:nth-child(2) {
@@ -54,7 +73,8 @@
 }
 
 .hamburger.active .hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
 }
 
 .navbar-nav {
