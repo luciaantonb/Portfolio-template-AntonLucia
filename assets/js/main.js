@@ -204,10 +204,22 @@ function initNavigation() {
         if (target) {
           const offsetTop = target.offsetTop - 80;
 
-          window.scrollTo({
-            top: offsetTop,
-            behavior: "smooth",
-          });
+          if (target) {
+            // Use GSAP to scroll if available, otherwise use native scroll
+            if (typeof gsap !== "undefined") {
+              gsap.to(window, {
+                duration: 1,
+                scrollTo: { y: target, offsetY: 80 },
+                ease: "power2.inOut",
+              });
+            } else {
+              const offsetTop = target.offsetTop - 80;
+              window.scrollTo({
+                top: offsetTop,
+                behavior: "smooth",
+              });
+            }
+          }
         }
       }
     });
